@@ -57,8 +57,11 @@ public class StudentDaoImplFake implements StudentDao {
 	@Override
 	public void updateStudent(Student student) {
 		Student s = students.get(student.getId());
-		s.setName(student.getName());
-		s.setAge(student.getAge());
-		s.setDepartmentID(student.getDepartmentID());
+		if(s==null)insertStudent(student);
+		else{
+			s.setName(student.getName());
+			s.setAge(student.getAge());
+			s.setDepartmentID(student.getDepartmentID());
+		}
 	}
 }
